@@ -16,6 +16,9 @@ gem 'responders'
 
 
 group :development, :test do
+  gem 'teaspoon-mocha'
+  gem 'launchy'
+  gem 'capybara'
   gem 'pry'
   gem 'web-console', '~> 2.0'
   gem 'spring'

@@ -1,0 +1,18 @@
+<h2>edit</h2>
+<%= form_for @idea, method: :put do |f|%>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+  <div class="form-group">
+    <%= f.label :quality %>
+    <%= f.number_field :quality %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "submit" %>
+  </div>
+<% end %>

@@ -8,6 +8,11 @@ describe Idea do
       expect(idea.body).to eq("really really good")
       expect(idea.quality).to eq("swill")
     end
+
+    it "has a default value of zero for quality" do
+      idea = Idea.create(title:"good idea",body: "really really good")
+      expect(idea.quality).to eq("swill")
+    end
   end
 
   context "is invalid" do
@@ -15,6 +20,5 @@ describe Idea do
       idea = Idea.create(title:"", body: "really really good", quality:"swill")
       expect(idea).not_to be_valid
     end
-
   end
 end
