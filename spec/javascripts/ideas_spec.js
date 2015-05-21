@@ -11,7 +11,7 @@ describe('IdeasIndex', function () {
 
   afterEach(function () {
     $.ajax.restore();
-    //this.xhr.restore();
+    this.xhr.restore();
   });
 
   describe('renderAllideas', function() {
@@ -31,9 +31,9 @@ describe('IdeasIndex', function () {
       ]);
 
 
-      console.log(renderAllIdeas())
+      renderAllIdeas();
       this.server.requests[0].respond(200,{ "Content-type": "application/json" }, ideas)
-      expect($('#idea').first.title).to.equal('good');
+      expect($('#idea').first().title).to.deep.equal('good');
       expect($('#idea').length, 2, "It should append two ideas to the dom")
     });
   });
