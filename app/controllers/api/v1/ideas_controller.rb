@@ -6,10 +6,9 @@ class Api::V1::IdeasController < ApplicationController
   end
 
   def create
-    quality = params["idea"]["quality"].to_i
-    title   = params["idea"]["title"]
-    body    = params["idea"]["body"]
-    Idea.create(title: title, body: body, quality: quality)
+    title = params["idea"]["title"]
+    body = params["idea"]["body"]
+    Idea.create(title: title, body: body)
   end
 
   def destroy

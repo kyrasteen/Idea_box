@@ -17,6 +17,7 @@ gem 'responders'
 
 group :development, :test do
   gem 'teaspoon-mocha'
+  gem 'magic_lamp'
   gem 'launchy'
   gem 'capybara'
   gem 'pry'

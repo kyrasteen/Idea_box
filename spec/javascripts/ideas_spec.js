@@ -2,6 +2,7 @@ var expect =  chai.expect;
 
 describe('IdeasIndex', function () {
   beforeEach(function () {
+    MagicLamp.load("homepage/index");
     sinon.spy($, 'ajax');
     this.requests = [];
     this.xhr = sinon.useFakeXMLHttpRequest();
@@ -16,11 +17,11 @@ describe('IdeasIndex', function () {
   describe('renderAllideas', function() {
     beforeEach(function() {
       this.server = sinon.fakeServer.create();
-    }),
+    });
 
     afterEach(function(){
       this.server.restore();
-    })
+    });
 
     it('appends all ideas to the dom', function() {
 
@@ -29,10 +30,11 @@ describe('IdeasIndex', function () {
         { id: 2, title:"good", body:"idear", quality: 2 }
       ]);
 
-      renderAllIdeas();
 
+      console.log(renderAllIdeas())
       this.server.requests[0].respond(200,{ "Content-type": "application/json" }, ideas)
-      expect($('#ideas').length, 2, "It should append two ideas to the dom")
-    })
-  })
+      expect($('#idea').first.title).to.equal('good');
+      expect($('#idea').length, 2, "It should append two ideas to the dom")
+    });
+  });
 });

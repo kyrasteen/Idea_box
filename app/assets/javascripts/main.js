@@ -9,19 +9,30 @@ function renderAllIdeas() {
     paintIdeas(data);
     data.forEach(function(idea) {
       bindDeleteIdea(idea);
-    })
-  })
+    });
+    filterAndRender(data);
+  });
+}
+
+function filterAndRender(ideas) {
+  $("#search-bar").on("change keyup", function(e){
+    var filteredIdeas = ideas.filter(function(idea) {
+      return idea.title.indexOf(e.target.value) > -1;
+    });
+    paintIdeas(filteredIdeas);
+  });
 }
 
 function ideaBody(idea) {
-                       return "<div class='idea'>" + "<h3>" + idea.title + "</h3>" +
-                       "<p>" + idea.body + "</p>" + "<p>quality: " + idea.quality +
-                       "</p>" + "<div><a id='edit' href='/ideas/" + idea.id +
-                       "/edit'>edit</a></div>" + "<div><a id='delete" + idea.id + "'" +
-                       "href=''>delete</a></div>" + "</div>"
-                      }
+  return "<div class='idea'>" + "<h3>" + idea.title + "</h3>" +
+    "<p>" + idea.body + "</p>" + "<p>quality: " + idea.quality +
+    "</p>" + "<div><a id='edit' href='/ideas/" + idea.id +
+    "/edit'>edit</a></div>" + "<div><a id='delete" + idea.id + "'" +
+    "href=''>delete</a></div>" + "</div>"
+}
 
 function paintIdeas(ideas) {
+  $("#ideas").remove();
   ideas.forEach(function(idea) {
     $("#ideas").append(ideaBody(idea))
   });
@@ -39,7 +50,6 @@ function renderNewIdeaForm() {
       idea: {
         title: $title.val(),
         body: $body.val(),
-        quality: $quality.val()
       }
     })
   })

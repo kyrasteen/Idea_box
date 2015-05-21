@@ -1,10 +1,8 @@
 <h1>Welcome to Idea Box</h1>
 <section id="search">
-  <%= form_tag(api_v1_ideas_path, :method => "get", id: "search-bar") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "idea title" %>
-    <%= button_tag("submit") %>
-  <% end %>
+  <input type="text" placeholder="filter ideas" id="search-bar">
 </section>
+
 <section id="ideas">
 </section>
 
@@ -18,10 +16,6 @@
     <div class="form-group">
       <label>body</label>
       <input id="new-body"></input>
-    </div>
-    <div class="form-group">
-      <label>quality</label>
-      <input id="new-quality"></input>
     </div>
     <div class="form-group">
       <button id="submit">create</button>
